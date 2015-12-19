@@ -4365,10 +4365,8 @@ class npc_pandaren_choose_faction : public CreatureScript
                 player->PrepareQuestMenu(creature->GetGUID());
 
             if (player->getRace() == RACE_PANDAREN_NEUTRAL)
-            {
-                if (player->GetQuestStatus(31450) == QUEST_STATUS_INCOMPLETE)
-                    player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_CHOOSE_FACTION, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-            }
+                player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_CHOOSE_FACTION, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
+            
             else if (player->getRace() == RACE_PANDAREN_ALLIANCE)
 				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_TP_ALLIANCE, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
             else if (player->getRace() == RACE_PANDAREN_HORDE)
