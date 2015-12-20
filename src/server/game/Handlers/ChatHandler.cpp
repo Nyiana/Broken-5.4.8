@@ -389,16 +389,17 @@ void WorldSession::HandleMessagechatOpcode(WorldPacket& recvData)
         } break;
         case CHAT_MSG_OFFICER:
         {
-            if (GetPlayer()->GetGuildId())
-            {
-                if (Guild* guild = sGuildMgr->GetGuildById(GetPlayer()->GetGuildId()))
-                {
-                    sScriptMgr->OnPlayerChat(GetPlayer(), type, lang, msg, guild);
-
-                    guild->BroadcastToGuild(this, true, msg, lang == LANG_ADDON ? LANG_ADDON : LANG_UNIVERSAL);
-                }
-            }
-        } break;
+			//if (GetPlayer()->GetGuildId())
+			//  {
+			//  if (Guild* guild = sGuildMgr->GetGuildById(GetPlayer()->GetGuildId()))
+			// {
+			//sScriptMgr->OnPlayerChat(GetPlayer(), type, lang, msg, guild);
+			std::string message;
+			message = "|cff00CC00[BrokenSouls][" + GetPlayerName() +"] " + msg;
+			sWorld->SendServerMessage(SERVER_MSG_STRING, message.c_str(), 0);
+			// guild->BroadcastToGuild(this, true, msg, lang == LANG_ADDON ? LANG_ADDON : LANG_UNIVERSAL);
+			// }
+			//}
         case CHAT_MSG_RAID:
         case CHAT_MSG_RAID_LEADER:
         {
