@@ -4366,12 +4366,13 @@ class npc_pandaren_choose_faction : public CreatureScript
 
             if (player->getRace() == RACE_PANDAREN_NEUTRAL)
                 player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_CHOOSE_FACTION, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-            
+          
             else if (player->getRace() == RACE_PANDAREN_ALLIANCE)
 				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_TP_ALLIANCE, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+				player->SetLevel(90);
             else if (player->getRace() == RACE_PANDAREN_HORDE)
 				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, GOSSIP_TP_HORDE, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
-
+				player->SetLevel(90);
             player->PlayerTalkClass->SendGossipMenu(1, creature->GetGUID());
             return true;
         }
